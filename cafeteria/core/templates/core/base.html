@@ -33,10 +33,10 @@
     <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
         <div class="container">
             <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="index.html">La
-            Caffettiera</a>
+                Caffettiera</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-         </button>
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item {% if request.path == '/' %} active {% endif %} px-lg-4">
@@ -59,9 +59,10 @@
                         <a class="nav-link text-uppercase text-expanded" href="{% url 'contact' %}">Contacto</a>
                     </li>
 
-                    <li class="nav-item {% if request.path|slice:":6" == '/blog/' %} active {% endif %} px-lg-4">
-                        <a class="nav-link text-uppercase text-expanded" href="{% url 'blog' %}">Blog</a>
+                    <li class="nav-item {% if request.path|slice:':6 ' == '/blog/' %} active {% endif %} px-lg-4 ">
+                        <a class="nav-link text-uppercase text-expanded " href="{% url 'blog' %} ">Blog</a>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -71,40 +72,30 @@
     {% block content %}{% endblock %}
 
     <!-- Pié de página -->
-    <footer class="footer text-faded text-center py-5">
-        <div class="container">
-            <p class="m-0">
-                <a href="#" class="link">
-                    <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-               </span>
+    <footer class="footer text-faded text-center py-5 ">
+        <div class="container ">
+            <p class="m-0 ">
+                {% for social in socials %} {% if social.url != None %}
+                <a href="{{ social.url }}" target="_blank" class="link ">
+                    <span class="fa-stack fa-lg ">
+                        <i class="fa fa-circle fa-stack-2x "></i>
+                        <i class="fa fa-{{social.key}} fa-stack-1x fa-inverse "></i>
+                    </span>
                 </a>
-                <a href="#" class="link">
-                    <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-               </span>
-                </a>
-                <a href="#" class="link">
-                    <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
-               </span>
-                </a>
+                {% endif %} {% endfor %}
             </p>
-            <p class="m-0 mbt">
-                <a href="sample.html" class="link">Política de privacidad</a> ·
-                <a href="sample.html" class="link">Aviso legal</a> ·
-                <a href="sample.html" class="link">Cookies</a>
+            <p class="m-0 mbt ">
+                <a href="sample.html " class="link ">Política de privacidad</a> ·
+                <a href="sample.html " class="link ">Aviso legal</a> ·
+                <a href="sample.html " class="link ">Cookies</a>
             </p>
-            <p class="m-0 mbt1">&copy; La Caffettiera 2018</p>
+            <p class="m-0 mbt1 ">&copy; La Caffettiera 2018</p>
         </div>
     </footer>
 
     <!-- Bootstrap -->
-    <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'core/vendor/jquery/jquery.min.js' %} "></script>
+    <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %} "></script>
 </body>
 
 </html>
