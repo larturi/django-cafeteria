@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'blog',
     'core',
+    'pages.apps.PagesConfig',
     'services.apps.ServicesConfig',
     'social.apps.SocialConfig'
 ]
