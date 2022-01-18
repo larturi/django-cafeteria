@@ -5,7 +5,7 @@ from .models import Page
 
 class PageAdmin(admin.ModelAdmin):
     read_only_fields = ('created', 'updated')
-    list_display = ('title',)
+    list_display = ('title', 'order',)
     search_fields = ('title',)
 
 
