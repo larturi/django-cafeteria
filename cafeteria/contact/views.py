@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.core.mail import EmailMessage
 from .forms import ContactForm
 
 
@@ -14,6 +15,19 @@ def contact(request):
             email = request.POST.get('email', '')
             content = request.POST.get('content', '')
 
-            return redirect(reverse('contact') + '?ok')
+            # Envio de correo
+            email_message = EmailMessage(
+                'La Caffettiera: Nuevo mensaje de contacto',
+                'De {} <{}>\n\nEscribió:\n\n{}'.format(name, email, content),
+                'noreply@inbox.io',
+                ['lea.arturi@gmail.com'],
+                reply_to=[email]
+            )
+
+            try:
+                email_message.send()
+                return redirect(reverse('contact') + '?ok')
+            except Exception as ex:
+                return redirect(reverse('contact') + '?fail')
 
     return render(request, 'contact/contact.html', {'form': contact_form})
